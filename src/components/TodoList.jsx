@@ -22,9 +22,12 @@ const TodoList = ({ todos, setTodos,setEditTodo }) => {
       console.log(todo)
       if(currTodo.id === todo.id)  {return {...todo,completed: !todo.completed } }
       console.log(todo)
+      // todo.className+=" comtrue"
       return todo;
 
     }))
+
+
 
   }
  
@@ -33,11 +36,13 @@ const TodoList = ({ todos, setTodos,setEditTodo }) => {
    
     <div>
 
-      {todos.map((todo,i) => (         
-      <li className="todo-list" key={todo.id} >
-         <input type="text" value={todo.title} className="list-item" onChange={(event)=> event.preventDefault()}/>
-          <div>
-<button className="button-complete task-button" onClick={()=>{handleDone(todo)}}>
+      {todos.map((todo,i) => (    
+        <div className="d-flex li-div">
+
+      <li className="todo-list m-1 p-1" key={todo.id} >
+         <input type="text" value={todo.title}  className= {`list ${todo.completed? "taskdone": "" } p-2`} onChange={(event)=> event.preventDefault()}/>
+          
+<button className="button-done task-button" onClick={()=>{handleDone(todo)}}>
   <i className="fa fa-check-circle"></i>
 </button>
 <button className="button-edit task-button" onClick={()=>{handleEdit(todo)}}>
@@ -46,8 +51,9 @@ const TodoList = ({ todos, setTodos,setEditTodo }) => {
 <button className="button-delete task-button" onClick={()=>{handleDelete(todo)}}>
   <i className="fa fa-trash"></i>
 </button>
-          </div>
+          
         </li>
+        </div>
 
         
             // console.log(todo.title)
